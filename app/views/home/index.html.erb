@@ -1,4 +1,8 @@
-<h2>Hello!</h2>
-<% @account.messages.each do |m| %>
-  <p><%= m.subject %></p>
+<% if user_signed_in? %>
+  <p><%= current_user.email %></p>
+    <% @account.messages.each do |m| %>
+      <p><%= m.subject %></p>
+    <% end %>
+<% else %>
+  <p>You gotta sign in to do that!</p>
 <% end %>

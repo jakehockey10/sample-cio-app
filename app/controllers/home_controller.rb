@@ -1,8 +1,10 @@
 class HomeController < ApplicationController
 require 'ContextIO'
   def index
-    cio = ContextIO.new(ENV['contextio_key'], ENV['contextio_secret'])
-    user_id = '563bab34e63723f2388b4567'
-    @account = cio.accounts[user_id]
+    if user_signed_in?
+      cio = ContextIO.new(ENV['contextio_key'], ENV['contextio_secret'])
+      user_email = current_user.email.to_s
+      @account = cio.accounts.where(email: user_email).first
+    end
   end
 end

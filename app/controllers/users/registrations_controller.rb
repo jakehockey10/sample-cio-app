@@ -1,7 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
-require 'ContextIO'
+# require 'ContextIO'
 
   # GET /resource/sign_up
   # def new
@@ -9,9 +9,20 @@ require 'ContextIO'
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    build_resource(sign_up_params)
+    resource.save
+    sign_in(resource)
+    cio = ContextIO.new(ENV['contextio_key'], ENV['contextio_secret'])
+    @user = resource
+    @user_email = @user.email.to_s
+    new_account = cio.api.request(
+      :post,
+      'https://api.context.io/2.0/connect_tokens',
+      {callback_url: 'http://localhost:3000/users/sign_in', email: @user_email}
+    )
+    redirect_to new_account["browser_redirect_url"]
+  end
 
   # GET /resource/edit
   # def edit
@@ -50,18 +61,18 @@ require 'ContextIO'
   # end
 
   # The path used after sign up.
-  def after_sign_up_path_for(resource)
-    super(resource)
-    cio = ContextIO.new(ENV['contextio_key'], ENV['contextio_secret'])
-    @user = User.find(params[:id])
-    @user_email = @user.email.to_s
-    new_account = cio.api.request(
-      :post,
-      'https://api.context.io/2.0/connect_tokens',
-      {callback_url: 'http://localhost:3000/', email: @user_email}
-    )
-    redirect_to new_account["browser_redirect_url"]
-  end
+  # def after_sign_up_path_for(resource)
+  #   super(resource)
+  #   cio = ContextIO.new(ENV['contextio_key'], ENV['contextio_secret'])
+  #   @user = current_user
+  #   @user_email = @user.email.to_s
+  #   new_account = cio.api.request(
+  #     :post,
+  #     'https://api.context.io/2.0/connect_tokens',
+  #     {callback_url: 'http://localhost:3000/', email: @user_email}
+  #   )
+  #   redirect_to new_account["browser_redirect_url"]
+  # end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

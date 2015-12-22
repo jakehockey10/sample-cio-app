@@ -7,7 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<h1>CIO test</h1>
+<% if notice %>
+  <p><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p><%= alert %></p>
+<% end %>
+<ul>
+  <% if user_signed_in? %>
+    <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+  <% else %>
+    <li><%= link_to "Sign in", new_user_session_path %></li>
+  <% end %>
+    <li><%= link_to "Sign up", new_user_registration_path %></li>
+</ul>
 <%= yield %>
 
 </body>
