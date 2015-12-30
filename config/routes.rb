@@ -3,5 +3,6 @@ Rails.application.routes.draw do
         sessions: 'users/sessions',
         registrations: 'users/registrations'
   }
+  get 'messages/:id', to: 'messages#show'
   root to: "home#index"
 end
