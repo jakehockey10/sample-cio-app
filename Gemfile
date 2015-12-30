@@ -12,6 +12,7 @@ gem 'puma'
 gem 'devise'
 gem 'figaro'
 gem 'contextio'
+gem 'gist-embed-rails'
 
 group :development, :test do
   gem 'byebug'

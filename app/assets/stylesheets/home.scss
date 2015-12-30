@@ -1,3 +1,13 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.row {
+  width: 100%;
+}
+
+.code-sample {
+  float: left;
+  width: 45%;
+}
+
+.result {
+  float: right;
+  width: 45%;
+}

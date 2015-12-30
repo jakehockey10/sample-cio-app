@@ -1,12 +1,19 @@
 <% if user_signed_in? %>
   <p>Current user is <em><%= current_user.email %></em></p>
   <h2>GETing last 5 messages</h2>
-  <p>Sample code:</p>
-  <p>Result:</p>
-    <% @account.messages.where(limit: 5).each do |m| %>
-      <p><%= link_to m.subject, "messages/#{m.message_id}" %></p>
-    <% end %>
+<div class="row">
+  <div class="code-sample">
+    <h3>Sample code:</h3>
+    <code data-gist-id="63075854b749fc7b8938"></code>
+  </div>
+  <div class="result">
+    <h3>Result:</h3>
+      <% @account.messages.where(limit: 5).each do |m| %>
+        <p><%= link_to m.subject, 'messages/#{m.message_id}' %></p>
+      <% end %>
 
-<% else %>
-  <p>You gotta sign in to do that!</p>
-<% end %>
+  <% else %>
+    <p>You gotta sign in to do that!</p>
+  <% end %>
+  </div>
+</div>
