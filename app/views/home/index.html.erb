@@ -1,7 +1,8 @@
 <% if user_signed_in? %>
-  <p><%= current_user.email %></p>
-    <% @account.messages.each do |m| %>
-      <p><%= m.subject %></p>
+  <p>Current user is <em><%= current_user.email %></em></p>
+  <h2>GETing last 5 messages</h2>
+    <% @account.messages.where(limit: 5).each do |m| %>
+      <p><%= link_to m.subject %></p>
     <% end %>
 <% else %>
   <p>You gotta sign in to do that!</p>
