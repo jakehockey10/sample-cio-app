@@ -9,9 +9,8 @@
   <div class="result">
     <h3>Result:</h3>
       <% @account.messages.where(limit: 5).each do |m| %>
-        <p><%= link_to m.subject, 'messages/#{m.message_id}' %></p>
+        <p><%= link_to m.subject, "messages/#{m.message_id}" %></p>
       <% end %>
-
   <% else %>
     <p>You gotta sign in to do that!</p>
   <% end %>

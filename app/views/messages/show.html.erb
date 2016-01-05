@@ -1,5 +1,15 @@
-<h3><%= @message.subject %></h3>
-<p>From: <%= @message.from %></p>
-<p>To: <%= @message.to %></p>
-
-<%= link_to "Back", :back %>
+<div class="row">
+  <div class="code-sample">
+    <h3>Sample code:</h3>
+    <code data-gist-id="d95f72c4560b03cf7c40"></code>
+  </div>
+  <div class="result">
+    <h3>Result:</h3>
+    <h3><%= @message.subject %></h3>
+    <p>From: <%= @message.from["name"] %>, <%= @message.from["email"] %></p>
+    <p>To: <%= @message.received_at.strftime("%A %b %d, %l:%M %p") %></p>
+  </div>
+</div>
+<div class="row">
+  <%= link_to "Back", :back %>
+</div>

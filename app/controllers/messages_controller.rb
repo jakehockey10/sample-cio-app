@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
 
-before_filter :start_cio
+before_filter :cio_init
 
   def show
     id = params[:id]
@@ -9,7 +9,7 @@ before_filter :start_cio
 
   private
 
-    def start_cio
+    def cio_init
       cio = ContextIO.new(ENV['contextio_key'], ENV['contextio_secret'])
       user_email = current_user.email.to_s
       @account = cio.accounts.where(email: user_email).first
