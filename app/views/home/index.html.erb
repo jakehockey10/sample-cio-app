@@ -1,16 +1,20 @@
-<!--This may result in an error showing 0 messages if the initial sync for the account has not completed yet. Check your status_callback_url to see if initial sync is finished.-->
 <% if user_signed_in? %>
-  <p>Current user is <em><%= current_user.email %></em></p>
-  <h2>GETing last 5 messages</h2>
   <div class="row">
-    <div class="code-sample">
+    <div class="col-md-12">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2>GETing last 5 messages</h2>
       <h3>Sample code:</h3>
       <code data-gist-id="63075854b749fc7b8938"></code>
     </div>
-    <div class="result">
+    <div class="col-md-6">
       <h3>Result:</h3>
-      <% if @account.messages == nil %>
-        <p>This account is still syncing.</p>
+      <% if @account.nil? %>
+        <p class="alert alert-danger">ContextIO account not setup properly! Did you authenticate via oauth?</p>
+      <% elsif @account.messages.count == 0 %>
+        <p class="alert alert-warning">There are no messages in this account (or the account has not synced yet!).</p>
       <% else %>
         <% @account.messages.where(limit: 5).each do |m| %>
           <p><%= link_to m.subject, "messages/#{m.message_id}" %></p>
@@ -20,6 +24,8 @@
   </div>
 <% else %>
   <div class="row">
+    <div class="col-md-12">
       <p>You gotta sign in to do that!</p>
+    </div>
   </div>
 <% end %>

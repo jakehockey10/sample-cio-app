@@ -1,0 +1,16 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+code {
+  background-color: white;
+}
+
+.center-align {
+  margin: 0 auto;
+  float: none;
+}
+
+.vertical-spacing {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}

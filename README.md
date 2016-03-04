@@ -21,6 +21,6 @@ This is a sample Rails application that uses the Context.IO API to connect to an
 
 ###Dependencies
 
-* We're using Devise to handle user registrations and sessions. You may use something different in your app. We're using Devise because it is pretty easy to get up and running and most people are familar with this gem (plus it is very well documented). Your signup flow may be different.
-* This app uses [Figaro](https://github.com/laserlemon/figaro) to store your API keys securely. Please ensure you `bundle exec figaro install` to generate an `application.yml` file, where you can store your ContextIO key and secret.
-* This app uses the `gist-embed-rails` gem to display gists with sample code. Feel free to get rid of those if you don't need them anymore.
+* We're using Devise to handle user registrations and sessions. You may use something different in your app. We're using Devise because it is pretty easy to get up and running, most people are familiar with this gem, and it is very well documented. Your signup flow may be different.
+* This app uses [Figaro](https://github.com/laserlemon/figaro) to store your API keys securely. Please ensure you `bundle exec figaro install` to generate an `application.yml` file, where you can store your Context.IO key and secret.
+* We're using the `gist-embed-rails` gem to display gists with sample code. Feel free to get rid of those if you don't need them anymore. We're also using `jquery-turbolinks` to get handle Turbolinks weirdness with the gists. Get rid of it if you no longer want the gists!
