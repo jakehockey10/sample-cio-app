@@ -7,7 +7,12 @@
     <h3>Result:</h3>
     <h3><%= @message.subject %></h3>
     <p>From: <%= @message.from["name"] %>, <%= @message.from["email"] %></p>
-    <p>To: <%= @message.received_at.strftime("%A %b %d, %l:%M %p") %></p>
+    <p>To:
+    <% @message.to.each do |t| %>
+      <%= t['email']%>
+    <% end %>
+    </p>
+    <p>Received: <%= @message.received_at.strftime("%A %b %d, %l:%M %p") %></p>
   </div>
 </div>
 <div class="row">
