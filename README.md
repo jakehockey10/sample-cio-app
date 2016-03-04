@@ -2,13 +2,13 @@
 
 This is a sample Rails application that uses the Context.IO API to connect to an email account and fetch back data.
 
-[Read more about Context.IO](https://context.io/docs/2.0)
-[Read the Ruby Context.IO gem documentation](http://www.rubydoc.info/gems/contextio/frames)
-[Context.IO Ruby gem on Github](https://github.com/contextio/contextio-ruby)
+* [Read more about Context.IO](https://context.io/docs/2.0)
+* [Read the Ruby Context.IO gem documentation](http://www.rubydoc.info/gems/contextio/frames)
+* [Context.IO Ruby gem on Github](https://github.com/contextio/contextio-ruby)
 
 ###Get up and running
 
-1. Fork this repo and git clone it your machine
+1. Fork this repo and git clone it to your machine
 2. Run bundle install (gem install bundler if you do not have bundler)
 3. Run `rake db:create`
 4. Run `rake db:migrate`
