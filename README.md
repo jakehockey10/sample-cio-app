@@ -23,3 +23,9 @@ This is a sample Rails application that uses the Context.IO API to connect to an
 * We're using Devise to handle user registrations and sessions. You may use something different in your app. We're using Devise because it is pretty easy to get up and running, most people are familiar with this gem, and it is very well documented. Your signup flow may be different.
 * This app uses [Figaro](https://github.com/laserlemon/figaro) to store your API keys securely. Please ensure you `bundle exec figaro install` to generate an `application.yml` file, where you can store your Context.IO key and secret.
 * We're using the `gist-embed-rails` gem to display gists with sample code. Feel free to get rid of those if you don't need them anymore. We're also using `jquery-turbolinks` to handle Turbolinks weirdness with the gists. Get rid of it if you no longer want the gists!
+
+###Signing up users
+
+The way the flow works currently, a user signs up for the app (i.e. a user in the database is created), then they link their inbox to their account in the app. There are currently no user checks to ensure the user that signs up in this app is the same as the one that is linked with ContextIO. This is by design currently just to keep things easy.
+
+You may also notice the user is created then signed in. This was necessary in order to ensure that when the user was redirected back from the "oauth dance", the user wouldn't have to sign in again.
