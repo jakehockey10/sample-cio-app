@@ -29,3 +29,5 @@ This is a sample Rails application that uses the Context.IO API to connect to an
 The way the flow works currently, a user signs up for the app (i.e. a user in the database is created), then they link their inbox to their account in the app. There are currently no user checks to ensure the user that signs up in this app is the same as the one that is linked with ContextIO. This is by design currently just to keep things easy.
 
 You may also notice the user is created then signed in. This was necessary in order to ensure that when the user was redirected back from the "oauth dance", the user wouldn't have to sign in again.
+
+Questions? Email `support@context.io`.
